@@ -13,7 +13,7 @@ public class PlayerControls : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		readyBow ();
-		readyArrow ();	
+		readyArrow ();
 	}
 	
 	// Update is called once per frame
