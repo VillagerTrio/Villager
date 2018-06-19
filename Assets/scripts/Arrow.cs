@@ -19,4 +19,10 @@ public class Arrow : MonoBehaviour {
 	public void fire() {
 		body.velocity = new Vector2 (50, 0);
 	}
+
+	void OnBecameInvisible() {
+		Destroy (this.gameObject);
+	}
+
+
 }
