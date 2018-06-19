@@ -17,12 +17,19 @@ public class Arrow : MonoBehaviour {
 	}
 
 	public void fire() {
-		body.velocity = new Vector2 (50, 0);
+		Vector3 axis = Vector3.zero;
+		float angle = 0f;
+		transform.rotation.ToAngleAxis(out angle, out axis);
+		angle = axis.z > 0 ? angle : 360f - angle;
+		body.velocity = this.angle2Velocity (angle);
 	}
 
 	void OnBecameInvisible() {
 		Destroy (this.gameObject);
 	}
 
-
+	Vector2 angle2Velocity(float a){
+		a *= Mathf.Deg2Rad;
+		return new Vector2(Mathf.Cos(a), Mathf.Sin(a)) * 50;
+	}
 }

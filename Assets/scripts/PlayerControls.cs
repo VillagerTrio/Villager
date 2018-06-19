@@ -44,8 +44,6 @@ public class PlayerControls : MonoBehaviour {
 		if (arrowIsReady) {
 			Arrow arrowBehavior = (Arrow) arrow.GetComponent (typeof(Arrow));
 			arrowBehavior.fire ();
-			arrow.transform.parent = null;
-			arrow.transform.rotation = Quaternion.Euler (0.0f, 0.0f, transform.rotation.z * -1.0f);
 			arrowIsReady = false;
 		}
 	}
