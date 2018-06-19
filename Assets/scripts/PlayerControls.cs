@@ -57,7 +57,8 @@ public class PlayerControls : MonoBehaviour {
 
 	void readyArrow() {
 		GameObject newArrow = (GameObject) Resources.Load ("arrow");
-		arrow = Instantiate (newArrow, new Vector3(transform.position.x,transform.position.y, transform.position.z) , Quaternion.identity);
+		Vector3 initialPos = new Vector3 (transform.position.x, transform.position.y, transform.position.z);
+		arrow = Instantiate (newArrow, initialPos, transform.rotation);
 		arrow.transform.parent = transform;
 		arrowIsReady = true;
 	}
