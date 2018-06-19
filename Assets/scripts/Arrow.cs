@@ -21,15 +21,20 @@ public class Arrow : MonoBehaviour {
 		float angle = 0f;
 		transform.rotation.ToAngleAxis(out angle, out axis);
 		angle = axis.z > 0 ? angle : 360f - angle;
+		transform.parent = null;
 		body.velocity = this.angle2Velocity (angle);
+	}
+
+	Vector2 angle2Velocity(float a){
+		a *= Mathf.Deg2Rad;
+		return new Vector2(Mathf.Cos(a), Mathf.Sin(a)) * 50;
 	}
 
 	void OnBecameInvisible() {
 		Destroy (this.gameObject);
 	}
 
-	Vector2 angle2Velocity(float a){
-		a *= Mathf.Deg2Rad;
-		return new Vector2(Mathf.Cos(a), Mathf.Sin(a)) * 50;
+	void OnTriggerEnter2D(Collider2D collider) {
+		body.velocity = new Vector2 (0, 0);
 	}
 }
